@@ -1,6 +1,6 @@
 # Mr. Threat
 
-Mr. Threat is a Djang Web-App that allows SOC Analysts to
+Mr. Threat is a Django Web-App that allows SOC Analysts to
 look up the IPs they're interested in.
 
 # Live Version
