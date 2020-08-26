@@ -1,0 +1,5 @@
+mr_threat_env/
+__pycache__/
+*.sqlite3
+.DS_Store
+secret_settings.py
