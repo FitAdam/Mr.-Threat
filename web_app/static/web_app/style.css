@@ -1,33 +1,101 @@
 body{
-    font-family: 'Arimo', sans-serif;
+    
     size: 3rem;
     line-height: 1.5;
     color: black;
 }
 
 
+
 #title {
     background-color:gainsboro;
-    
+    background-size: auto;
 }
 
 .container-fluid{
     padding: 3% 15%;
+    
 }
 
 
 /* Navigation Bar */
 
 .navbar-brand{
-    font-family: 'Arimo', sans-serif;
+    font-family: 'Bebas Neue', cursive;
     font-size: 2.5rem;
     font-weight: bold;
     color: black;
 }
 
 .nav-link{
-    font-family: 'Arimo', sans-serif;
+    font-family: 'Bebas Neue', cursive;
     font-size: 1.3rem;
     font-weight: bold;
     color: black;
 }
+
+/* Search view */
+
+.col-lg-6{
+    padding-top: 10%;
+    font-family: 'Lexend Peta', sans-serif;
+    color: black;
+}
+
+.check_ip_btn{
+    margin-top: 0.3cm;
+    float: right;
+    
+}
+
+/* Sources */
+
+.APIs{
+    padding-top: 20%;
+
+}
+
+#press {
+    background-color:gainsboro;
+    padding-bottom: 3%;
+  }
+
+.source-logo{
+    width: 20%;
+    margin: 20px 20px 50px;
+  }
+
+/* The presentaion of results */
+
+#results{
+    background-color: black;
+    background-size: cover;
+    color: honeydew;
+    padding: 3% 7%;
+    
+}
+
+.note{
+    font-family: 'Bebas Neue';
+}
+
+.card{
+    color: black;
+    margin-left: 50%;
+}
+
+/* Pricing and commercial */
+
+
+#offer{
+    background-color:gainsboro;
+    background-size: cover;
+}
+
+
+.white-section{
+    text-align: center;
+    background-color: black;
+    color: honeydew;
+    font-family: 'Bebas Neue';
+  }
