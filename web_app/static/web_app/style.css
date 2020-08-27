@@ -82,6 +82,7 @@ body{
 .card{
     color: black;
     margin-left: 50%;
+    font-family: 'Montserrat', sans-serif;
 }
 
 /* Pricing and commercial */
@@ -90,6 +91,7 @@ body{
 #offer{
     background-color:gainsboro;
     background-size: cover;
+    font-family: 'Montserrat', sans-serif;
 }
 
 
