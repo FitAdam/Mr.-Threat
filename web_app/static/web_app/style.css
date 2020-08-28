@@ -45,7 +45,8 @@ body{
 .check_ip_btn{
     margin-top: 0.3cm;
     float: right;
-    
+    font-family: 'Bebas Neue', cursive;
+    font-size: 1em;
 }
 
 /* Sources */
@@ -83,6 +84,7 @@ body{
     color: black;
     margin-left: 50%;
     font-family: 'Montserrat', sans-serif;
+    width: auto;
 }
 
 /* Pricing and commercial */

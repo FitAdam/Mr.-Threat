@@ -60,11 +60,11 @@
                 </div>
 
                 <div class="col-lg-6">
-                    <form action="/url/to/submit/" method="post" class="form">
+                    <form action=""  class="form" method="post">
                         {% csrf_token %}
-                        <input class="form-control form-control-lg" type="text" placeholder="For example: 86.3.25.81...">
+                        {{ form.as_p }}
                         {% buttons %}
-                        <button type="submit" class="btn btn-dark check_ip_btn">Check IP</button>
+                         <button name="submit" class="btn btn-dark check_ip_btn">Check IP</button>
                         {% endbuttons %}
                     </form>
                 </div>
@@ -93,7 +93,7 @@
                 <h1>Here you see the results.</h1>
             </div>
             <!-- Note to copy paste. -->
-            <div class="card text-center">
+            <div class="card text-center ">
                 <div class="card-header">
                   Port Scan
                 </div>

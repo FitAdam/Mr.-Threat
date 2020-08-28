@@ -6,7 +6,9 @@ from . import views
 
 app_name = 'web_app'
 
-urlpatterns = {
+urlpatterns = [
     # Home page
     path('', views.index, name='index'),
-}
+    # Page that shows threat intelligence
+    path('the_results/', views.the_results, name='the_results'),
+]
