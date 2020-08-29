@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
+
 from .models import IP
 from .forms import IP_Form
 
@@ -9,7 +11,7 @@ def index(request):
    
     return render(request, 'web_app/index.html')
 
-
+@login_required
 def search(request):
     """The search site"""
     if request.method != 'POST':
@@ -22,6 +24,7 @@ def search(request):
 
             new_ip = form.save(commit=False)
             new_ip.reported = form.cleaned_data['reported']
+            new_ip.owner = request.user
             print(new_ip.the_ip)
             print(new_ip.reported)
             
@@ -33,6 +36,7 @@ def search(request):
     context = {'form': form}
     return render(request, 'web_app/search.html', context)
 
+@login_required
 def the_results(request):
     """Show the reports from APIs."""
     the_ips =  IP.objects.all()

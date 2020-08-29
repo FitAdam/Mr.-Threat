@@ -5,6 +5,7 @@
     <div class="container-fluid">
         {% for ip in the_ips %}
         <h1>{{ ip.the_ip }} </h1>
+        <h5>{{ ip.owner }}</h5>
         <p>{{ ip.date_checked }}</p>
         <br>
         {% empty %}
