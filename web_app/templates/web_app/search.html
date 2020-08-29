@@ -1,0 +1,39 @@
+{% extends "web_app/base.html" %}
+{% load bootstrap4 %}
+
+{% block content %}
+<section id="title">
+    <div class="container-fluid">
+        <div class="row mt-5 main-view">
+
+            <div class="col-lg-6">
+                <h1>The only SOC tool that you need.</h1>
+
+            </div>
+
+            <div class="col-lg-6">
+                <form action="" class="form" method="post">
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+                    {% buttons %}
+                    <button name="submit" class="btn btn-dark check_ip_btn">Check IP</button>
+                    {% endbuttons %}
+                </form>
+            </div>
+
+        </div>
+        <!-- Our sources -->
+
+        <div class="APIs">
+            <section class="colored-section" id="sources">
+                <img class="source-logo" src="https://www.abuseipdb.com/img/abuseipdb.png.pagespeed.ce.CI8T6WsXU7.png"
+                    alt="abuseipdb">
+                <img class="source-logo" src="https://www.virustotal.com/gui/images/vt-enterprise.svg" alt="virustotal">
+                <img class="source-logo" src="https://www.phishtank.com/images/logo_with_tagline.gif" alt="phishtank">
+                <img class="source-logo" src="https://www.badips.com/img/badips.com-lm.png" alt="badips">
+
+            </section>
+        </div>
+    </div>
+</section>
+{% endblock content %}

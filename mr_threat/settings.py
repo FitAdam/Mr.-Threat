@@ -34,6 +34,9 @@ INSTALLED_APPS = [
     # My apps
     'web_app',
     "bootstrap4",
+    "users",
+
+    # Django apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

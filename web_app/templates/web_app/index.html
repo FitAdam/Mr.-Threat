@@ -1,182 +1,132 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <!-- bootstrap -->
-    {% load bootstrap4 %}
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-        crossorigin="anonymous"></script>
-    <!--- google fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lexend+Peta&family=Montserrat:wght@500&display=swap" rel="stylesheet">
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'web_app/style.css' %}">
-    <title>Mr. Threat</title>
-</head>
-
-<body>
-
-    <section id="title">
-
-        <div class="container-fluid">
-            
-            <!-- Nav Bar -->
-            <nav class="navbar navbar-expand-lg">
-                <a class="navbar-brand" href="#"> Mr. Threat</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <div class="navbar-nav ml-auto">
-                        <a class="nav-link" href="#">Log in</a>
-                        <a class="nav-link" href="#">Register</a>
-                        <a class="nav-link" href="#">Pricing</a>
-
-                    </div>
-                </div>
-            </nav>
+{% extends "web_app/base.html" %}
+{% load bootstrap4 %}
 
 
-            <!-- Title -->
+{% block content %}
+<section id="title">
 
-            <div class="row mt-5 main-view">
+  <div class="container-fluid">
 
-                <div class="col-lg-6">
-                    <h1>The only SOC tool that you need.</h1>
+    <!-- Title -->
 
-                </div>
+    <div class="row mt-5 main-view">
 
-                <div class="col-lg-6">
-                    <form action=""  class="form" method="post">
-                        {% csrf_token %}
-                        {{ form.as_p }}
-                        {% buttons %}
-                         <button name="submit" class="btn btn-dark check_ip_btn">Check IP</button>
-                        {% endbuttons %}
-                    </form>
-                </div>
+      <div class="col-lg-6">
+        <h1>The only SOC tool that you need.</h1>
 
-            </div>
-            <!-- Our sources -->
+      </div>
 
-            <div class="APIs">
-                <section class="colored-section" id="sources">
-                    <img class="source-logo" src="https://www.abuseipdb.com/img/abuseipdb.png.pagespeed.ce.CI8T6WsXU7.png" alt="abuseipdb">
-                    <img class="source-logo" src="https://www.virustotal.com/gui/images/vt-enterprise.svg" alt="virustotal">
-                    <img class="source-logo" src="https://www.phishtank.com/images/logo_with_tagline.gif" alt="phishtank">
-                    <img class="source-logo" src="https://www.badips.com/img/badips.com-lm.png" alt="badips">
-    
-                </section>
-            </div>
-            
+      <div class="col-lg-6">
+        {% if user.is_authenticated %}
 
-        </div>
+        <a href="{% url 'web_app:search' %}" class="btn btn-dark">Search</a>
 
-    </section>
+        {% else %}
+        <a href="{% url 'users:login' %}" class="btn btn-dark">Log in</a>
+        {% endif %}
+      </div>
 
-    <section id="results">
-        <div class="container-fluid">
-            <div class="note">
-                <h1>Here you see the results.</h1>
-            </div>
-            <!-- Note to copy paste. -->
-            <div class="card text-center ">
-                <div class="card-header">
-                  Port Scan
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title">The IP: 119.86.17.147 </h5>
-                  <p class="card-text">A port scan is an attack that sends client requests to a range of server port addresses on a host, with the goal of finding an active port and exploiting a known vulnerability of that service. Scanning, as a method for discovering exploitable communication channels, has been around for ages.</p>
-                  <a href="#" class="btn btn-dark">Copy text</a>
-                </div>
-                <div class="card-footer text-muted">
-                  2 days ago
-                </div>
-              </div>
-        </div>
-    </section>
-
-    <section id="offer">
-        <div class="container-fluid">
-            <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-                <h1 class="display-4">Pricing</h1>
-                <p class="lead">You need auto look ups? We are here to do them for you. With us you will never miss the malicious attack.</p>
-              </div>
-              
-              <div class="container">
-                <div class="card-deck mb-3 text-center">
-                  <div class="card mb-4 shadow-sm">
-                    <div class="card-header">
-                      <h4 class="my-0 font-weight-normal">Free</h4>
-                    </div>
-                    <div class="card-body">
-                      <h1 class="card-title pricing-card-title">$0 <small class="text-muted">/ mo</small></h1>
-                      <ul class="list-unstyled mt-3 mb-4">
-                        <li>10 users included</li>
-                        <li>2 GB of storage</li>
-                        <li>Email support</li>
-                        <li>Help center access</li>
-                      </ul>
-                      <button type="button" class="btn btn-lg btn-block btn-outline-dark">Sign up for free</button>
-                    </div>
-                  </div>
-                  <div class="card mb-4 shadow-sm">
-                    <div class="card-header">
-                      <h4 class="my-0 font-weight-normal">Pro</h4>
-                    </div>
-                    <div class="card-body">
-                      <h1 class="card-title pricing-card-title">$15 <small class="text-muted">/ mo</small></h1>
-                      <ul class="list-unstyled mt-3 mb-4">
-                        <li>20 users included</li>
-                        <li>10 GB of storage</li>
-                        <li>Priority email support</li>
-                        <li>Help center access</li>
-                      </ul>
-                      <button type="button" class="btn btn-lg btn-block btn-dark">Get started</button>
-                    </div>
-                  </div>
-                  <div class="card mb-4 shadow-sm">
-                    <div class="card-header">
-                      <h4 class="my-0 font-weight-normal">Enterprise</h4>
-                    </div>
-                    <div class="card-body">
-                      <h1 class="card-title pricing-card-title">$29 <small class="text-muted">/ mo</small></h1>
-                      <ul class="list-unstyled mt-3 mb-4">
-                        <li>30 users included</li>
-                        <li>15 GB of storage</li>
-                        <li>Phone and email support</li>
-                        <li>Help center access</li>
-                      </ul>
-                      <button type="button" class="btn btn-lg btn-block btn-dark">Contact us</button>
-                    </div>
-                  </div>
-                </div>
-              
-        </div>
-    </section>
-
-
-
-     <!-- Footer -->
-  <footer class="white-section" id="footer">
-    <div class="container-fluid">
-      <p>© Copyright 2020 Mr. Threat</p>
     </div>
-  </footer>
+    <!-- Our sources -->
 
-</body>
+    <div class="APIs">
+      <section class="colored-section" id="sources">
+        <img class="source-logo" src="https://www.abuseipdb.com/img/abuseipdb.png.pagespeed.ce.CI8T6WsXU7.png"
+          alt="abuseipdb">
+        <img class="source-logo" src="https://www.virustotal.com/gui/images/vt-enterprise.svg" alt="virustotal">
+        <img class="source-logo" src="https://www.phishtank.com/images/logo_with_tagline.gif" alt="phishtank">
+        <img class="source-logo" src="https://www.badips.com/img/badips.com-lm.png" alt="badips">
 
-</html>
+      </section>
+    </div>
+
+
+  </div>
+
+</section>
+
+<section id="results">
+  <div class="container-fluid">
+    <div class="note">
+      <h1>Here you see the results.</h1>
+    </div>
+    <!-- Note to copy paste. -->
+    <div class="card text-center ">
+      <div class="card-header">
+        Port Scan
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">The IP: 119.86.17.147 </h5>
+        <p class="card-text">A port scan is an attack that sends client requests to a range of server port addresses
+          on a host, with the goal of finding an active port and exploiting a known vulnerability of that service.
+          Scanning, as a method for discovering exploitable communication channels, has been around for ages.</p>
+        <a href="#" class="btn btn-dark">Copy text</a>
+      </div>
+      <div class="card-footer text-muted">
+        2 days ago
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="offer">
+  <div class="container-fluid">
+    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+      <h1 class="display-4">Pricing</h1>
+      <p class="lead">You need auto look ups? We are here to do them for you. With us you will never miss the
+        malicious attack.</p>
+    </div>
+
+    <div class="container">
+      <div class="card-deck mb-3 text-center">
+        <div class="card mb-4 shadow-sm">
+          <div class="card-header">
+            <h4 class="my-0 font-weight-normal">Free</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">$0 <small class="text-muted">/ mo</small></h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>10 users included</li>
+              <li>2 GB of storage</li>
+              <li>Email support</li>
+              <li>Help center access</li>
+            </ul>
+            <button type="button" class="btn btn-lg btn-block btn-outline-dark">Sign up for free</button>
+          </div>
+        </div>
+        <div class="card mb-4 shadow-sm">
+          <div class="card-header">
+            <h4 class="my-0 font-weight-normal">Pro</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">$15 <small class="text-muted">/ mo</small></h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>20 users included</li>
+              <li>10 GB of storage</li>
+              <li>Priority email support</li>
+              <li>Help center access</li>
+            </ul>
+            <button type="button" class="btn btn-lg btn-block btn-dark">Get started</button>
+          </div>
+        </div>
+        <div class="card mb-4 shadow-sm">
+          <div class="card-header">
+            <h4 class="my-0 font-weight-normal">Enterprise</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">$29 <small class="text-muted">/ mo</small></h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>30 users included</li>
+              <li>15 GB of storage</li>
+              <li>Phone and email support</li>
+              <li>Help center access</li>
+            </ul>
+            <button type="button" class="btn btn-lg btn-block btn-dark">Contact us</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+</section>
+
+{% endblock content %}
