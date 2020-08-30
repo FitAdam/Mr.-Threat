@@ -3,14 +3,14 @@
 {% block content %}
 <section id="results">
     <div class="container-fluid">
-        {% for ip in the_ips %}
-        <h1>{{ ip.the_ip }} </h1>
-        <h5>{{ ip.owner }}</h5>
-        <p>{{ ip.date_checked }}</p>
-        <br>
-        {% empty %}
-        <h1>empty</h1>
-        {% endfor %}
+        <div class="alert alert-success" role="alert">
+            <h4 class="alert-heading">Well done!</h4>
+            <p>Aww yeah, you successfully passed IP addres to the next site. Congratulations!</p>
+            <hr>
+            <p class="mb-0">{{ searched_ip }}</p>
+        </div>
+
+
     </div>
 </section>
 {% endblock content %}

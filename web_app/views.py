@@ -27,10 +27,11 @@ def search(request):
             new_ip.owner = request.user
             print(new_ip.the_ip)
             print(new_ip.reported)
-            
+            searched_ip = new_ip.the_ip
+            print(f"you get : {searched_ip}")
             new_ip.save()
-           
-            return redirect('web_app:the_results')
+            context = {'searched_ip': searched_ip}
+            return render(request,'web_app/the_results.html', context)
     
     # Display a blank or invalid form.
     context = {'form': form}
@@ -39,8 +40,12 @@ def search(request):
 @login_required
 def the_results(request):
     """Show the reports from APIs."""
+    context = {'searched_ip': searched_ip}
+    return render(request,'web_app/the_results.html', context)
+
+
+@login_required
+def searched_ips(request):
     the_ips =  IP.objects.all()
     context = {'the_ips': the_ips}
-    return render(request, 'web_app/the_results.html', context)
-
-
+    return render(request, 'web_app/searched_ips.html', context)

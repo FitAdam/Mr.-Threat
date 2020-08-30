@@ -1,0 +1,25 @@
+{% extends "web_app/base.html" %}
+
+{% block content %}
+<section id="results">
+    <div class="container-fluid">
+
+        <div class="ips_list">
+            <ul class="list-group"></ul>
+            {% for ip in the_ips %}
+            <li class="list-group-item list-group-item-dark">
+                <h1>{{ ip.the_ip }} </h1>
+                <h5>{{ ip.owner }}</h5>
+                <p>{{ ip.date_checked }}</p>
+            </li>
+            {% empty %}
+            <li class="list-group-item list-group-item-dark">
+                <h1>empty</h1>
+            </li>
+            {% endfor %}
+            </ul>
+        </div>
+
+    </div>
+</section>
+{% endblock content %}
