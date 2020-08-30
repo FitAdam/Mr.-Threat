@@ -7,7 +7,7 @@ look up the IPs they're interested in.
 
 To see an online version go to:
 
-[to be confirmed](...)
+[to be confirmed](https://github.com/FitAdam/Mr.-Threat)
 
 # Instalation
 
