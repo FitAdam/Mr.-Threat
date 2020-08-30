@@ -4,6 +4,8 @@ from django.contrib.auth.decorators import login_required
 from .models import IP
 from .forms import IP_Form
 
+from .scans import check_the_ip
+
 
 
 def index(request):
@@ -30,7 +32,8 @@ def search(request):
             searched_ip = new_ip.the_ip
             print(f"you get : {searched_ip}")
             new_ip.save()
-            context = {'searched_ip': searched_ip}
+            checked_ip = check_the_ip(new_ip.the_ip)
+            context = {'searched_ip': searched_ip, 'checked_ip': checked_ip}
             return render(request,'web_app/the_results.html', context)
     
     # Display a blank or invalid form.

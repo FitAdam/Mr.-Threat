@@ -2,7 +2,7 @@ import requests
 import json
 
 # keys
-from keys import abuseipdb_key
+from . keys import abuseipdb_key
 
 
 # Defining the api-endpoint
@@ -15,7 +15,6 @@ def get_querystring(ipAddress, maxAgeInDays):
     'maxAgeInDays': maxAgeInDays}
     return querystring
 
-querystring = get_querystring('36.67.32.45', '7')
 
 def get_headers(abuseipdb_key):
     """Returns the headers"""
@@ -25,20 +24,27 @@ def get_headers(abuseipdb_key):
     }
     return headers
 
-headers = get_headers(abuseipdb_key)
 
-def get_response():
+def get_response(new_headers, new_querystring):
     """This function send the request and returns it as variable"""
-    response = requests.request(method='GET', url=url, headers=headers, params=querystring)
+    response = requests.request(method='GET', url=url, headers=new_headers, params=new_querystring)
 
     return response
 
-response = get_response()
 
-def get_output():
-    """This function decodes and returns whole answer."""
+
+def get_output(new_response):
+    """This function decodes and returns the whole answer."""
+    decodedResponse = json.loads(new_response.text)
     # Formatted output
-    decodedResponse = json.loads(response.text)
     return json.dumps(decodedResponse, sort_keys=True, indent=4)
 
-print(get_output())
+
+
+def check_the_ip(suspect_ip):
+    """This function takes user input, checks the IP and returns the answer"""
+    querystring = get_querystring( suspect_ip, '7')
+    headers = get_headers(abuseipdb_key)
+    response = get_response(headers, querystring)
+    answer = get_output(response)
+    return answer
