@@ -34,10 +34,10 @@ def get_response(new_headers, new_querystring):
 
 
 def get_output(new_response):
-    """This function decodes and returns the whole answer."""
+    """This function using json.loads turns data into a python dictionary."""
     decodedResponse = json.loads(new_response.text)
     # Formatted output
-    return json.dumps(decodedResponse, sort_keys=True, indent=4)
+    return decodedResponse
 
 
 

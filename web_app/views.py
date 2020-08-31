@@ -33,6 +33,7 @@ def search(request):
             print(f"you get : {searched_ip}")
             new_ip.save()
             checked_ip = check_the_ip(new_ip.the_ip)
+            checked_ip = checked_ip['data']['isp']
             context = {'searched_ip': searched_ip, 'checked_ip': checked_ip}
             return render(request,'web_app/the_results.html', context)
     

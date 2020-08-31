@@ -4,3 +4,4 @@ __pycache__/
 .DS_Store
 secret_settings.py
 keys.py
+debug.log
