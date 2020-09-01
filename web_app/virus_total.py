@@ -4,14 +4,13 @@ import json
 
 from keys import virus_total_key
 
-url = "https://www.virustotal.com/api/v3/ip_addresses/79.143.44.122"
 
-def get_querystring(ipAddress, maxAgeInDays):
-    """Returns querysting needed for request"""
-    querystring = {
-    "ip": ip,
-    'maxAgeInDays': maxAgeInDays}
-    return querystring
+
+def get_url_with_ip(ipAddress):
+    """Returns url with IP needed for request"""
+    url = "https://www.virustotal.com/api/v3/ip_addresses/"
+    url += ipAddress
+    return url
 
 
 def get_headers(virus_total_key):
@@ -21,9 +20,10 @@ def get_headers(virus_total_key):
     }
     return headers
 
-headers = get_headers(virus_total_key)
-querystring = {"limit":"10"}
 
-response = requests.request("GET", url, params=querystring, headers=headers)
+headers = get_headers(virus_total_key)
+'querystring = {"limit":"1"}
+url = get_url_with_ip('23.90.145.44')
+response = requests.request("GET", url, headers=headers)
 
 print(response.text)
