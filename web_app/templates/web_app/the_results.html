@@ -14,8 +14,11 @@
               <img class="card-img-top" src="https://www.abuseipdb.com/img/abuseipdb.png.pagespeed.ce.CI8T6WsXU7.png" alt="Card image cap">
               <div class="card-body">
                 <h5 class="card-title">AbuseIPDB</h5>
-                <p class="card-text">{{ checked_ip }}</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                <p class="card-text">
+                  {% for key, value in checked_ip.items %}
+                  <li><strong>{{ key }}:</strong> {{ value }} </li>
+                  {% endfor %}</p>
+                <p class="card-text"><small class="text-muted">Last 7 days.</small></p>
               </div>
             </div>
             <div class="card">

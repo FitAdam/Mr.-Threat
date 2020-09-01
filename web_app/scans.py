@@ -48,3 +48,8 @@ def check_the_ip(suspect_ip):
     response = get_response(headers, querystring)
     answer = get_output(response)
     return answer
+
+
+def get_the_isp(decodedResponse):
+    return decodedResponse['data']['isp']
+

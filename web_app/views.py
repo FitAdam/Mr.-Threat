@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from .models import IP
 from .forms import IP_Form
 
-from .scans import check_the_ip
+from .scans import check_the_ip, get_the_isp
 
 
 
@@ -33,7 +33,8 @@ def search(request):
             print(f"you get : {searched_ip}")
             new_ip.save()
             checked_ip = check_the_ip(new_ip.the_ip)
-            checked_ip = checked_ip['data']['isp']
+            #checked_ip = get_the_isp(checked_ip)
+            checked_ip = checked_ip['data']
             context = {'searched_ip': searched_ip, 'checked_ip': checked_ip}
             return render(request,'web_app/the_results.html', context)
     
