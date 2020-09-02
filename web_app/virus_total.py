@@ -63,12 +63,4 @@ def check_the_votes_with_vt(the_ip):
 
 
 test = check_the_votes_with_vt('118.100.116.155')
-print(test)
-"""
-checked_dict = checked_dict['data']['attributes']['last_analysis_results']
 
-for key, value in checked_dict.items():
-    print(key)
-    print(value)
-    
-"""
