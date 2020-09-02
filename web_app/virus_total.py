@@ -9,7 +9,6 @@ from .keys import virus_total_key
 def get_url_with_ip(ipAddress):
     """Returns url with IP needed for request"""
     url = "https://www.virustotal.com/api/v3/ip_addresses/"
-    
     url += ipAddress
     return url
 

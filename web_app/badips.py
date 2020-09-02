@@ -27,6 +27,3 @@ def check_the_ip_with_badips(the_ip):
     response = send_the_request_to_badips(url)
     answer = get_output(response)
     return answer
-
-test = check_the_ip_with_badips("114.216.105.17")
-print(test)
