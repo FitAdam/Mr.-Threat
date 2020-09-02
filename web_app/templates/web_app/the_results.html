@@ -2,42 +2,80 @@
 
 {% block content %}
 <section id="results">
-    <div class="container-fluid">
-        <div class="alert alert-success" role="alert">
-            <h4 class="alert-heading">{{ searched_ip }}</h4>
-            <p></p>
-            <hr>
-            <p class="mb-0">Well done!</p>
-        </div>
-        <div class="card-deck">
-            <div class="card">
-              <img class="card-img-top" src="https://www.abuseipdb.com/img/abuseipdb.png.pagespeed.ce.CI8T6WsXU7.png" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">AbuseIPDB</h5>
-                <p class="card-text">
-                  {% for key, value in checked_ip.items %}
-                  <li><strong>{{ key }}:</strong> {{ value }} </li>
-                  {% endfor %}</p>
-                <p class="card-text"><small class="text-muted">Last 7 days.</small></p>
-              </div>
-            </div>
-            <div class="card">
-              <img class="card-img-top" src="..." alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-              </div>
-            </div>
-            <div class="card">
-              <img class="card-img-top" src="..." alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-              </div>
-            </div>
-          </div>
+  <div class="container-fluid">
+    <div class="alert alert-success" role="alert">
+      <h4 class="alert-heading">{{ searched_ip }}</h4>
+      <p></p>
+      <hr>
+      <p class="mb-0">Well done!</p>
     </div>
+    <div class="card-deck">
+      <div class="card">
+        <img class="card-img-top" src="https://www.abuseipdb.com/img/abuseipdb.png.pagespeed.ce.CI8T6WsXU7.png"
+          alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">AbuseIPDB</h5>
+          <p class="card-text">
+            {% for key, value in checked_ip.items %}
+            <li><strong>{{ key }}:</strong> {{ value }} </li>
+            {% endfor %}</p>
+          <p class="card-text"><small class="text-muted">Last 7 days.</small></p>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img-top" src="https://www.virustotal.com/gui/images/vt-enterprise.svg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Virus total</h5>
+          <p class="card-text">
+            {% for key, value in checked_ip_votes_vt.items %}
+            {% if key != 'last_analysis_results' and key != 'whois' %} 
+            <li><strong>{{ key }}:</strong> {{ value }} </li>
+            {% endif %}
+            {% endfor %}
+          </p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img-top" src="..." alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+            content. This card has even longer content than the first to show that equal height action.</p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="offer">
+  <div class="container-fluid">
+    <h2>Virus total</h2>
+    <div class="table-responsive dark">
+      <table class="table table-striped table-sm">
+        {% for key, value in checked_ip_vt.items %}
+        <thead>
+          <tr>
+            <th>{{ key }}</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for x, y in value.items %}
+          <tr>
+            {% if y == 'malicious' %}
+            <td style="background-color: red;">{{ x }} : {{ y }} </td>
+            {% elif y == 'suspicious' %}
+            <td style="background-color: yellow;">{{ x }} : {{ y }} </td>
+            {% else %}
+            <td>{{ x }} : {{ y }} </td>
+            {% endif %}
+          </tr>
+          {% endfor %}
+        </tbody>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
 </section>
 {% endblock content %}

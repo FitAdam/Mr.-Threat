@@ -5,6 +5,7 @@ from .models import IP
 from .forms import IP_Form
 
 from .scans import check_the_ip, get_the_isp
+from .virus_total import check_the_ip_with_vt, check_the_votes_with_vt
 
 
 
@@ -33,9 +34,9 @@ def search(request):
             print(f"you get : {searched_ip}")
             new_ip.save()
             checked_ip = check_the_ip(new_ip.the_ip)
-            #checked_ip = get_the_isp(checked_ip)
-            checked_ip = checked_ip['data']
-            context = {'searched_ip': searched_ip, 'checked_ip': checked_ip}
+            checked_ip_vt = check_the_ip_with_vt(new_ip.the_ip)
+            checked_ip_votes_vt = check_the_votes_with_vt(new_ip.the_ip)
+            context = {'searched_ip': searched_ip, 'checked_ip': checked_ip, 'checked_ip_vt': checked_ip_vt, 'checked_ip_votes_vt': checked_ip_votes_vt}
             return render(request,'web_app/the_results.html', context)
     
     # Display a blank or invalid form.

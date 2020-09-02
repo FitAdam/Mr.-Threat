@@ -80,6 +80,9 @@ body{
     padding: 3% 7%;
     
 }
+.table-responsive{
+    color: honeydew;
+}
 
 .note{
     font-family: 'Bebas Neue';
