@@ -8,7 +8,7 @@
             <ul class="list-group"></ul>
             {% for ip in the_ips %}
             <li class="list-group-item list-group-item-dark">
-                <h1>{{ ip.the_ip }} </h1>
+                <h1><a href="{% url 'web_app:the_searched_ip' ip.id %}">{{ ip.the_ip }}</a></h1>
                 <h5>{{ ip.owner }}</h5>
                 <p>{{ ip.date_checked }}</p>
             </li>

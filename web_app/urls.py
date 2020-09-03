@@ -15,4 +15,6 @@ urlpatterns = [
     path('the_results/', views.the_results, name='the_results'),
     # Page that shows user's searched IPs
     path('searched_ips/', views.searched_ips, name='searched_ips'),
+    # Page that shows user's saved IP
+    path('the_searched_ip/<int:ip_id>/', views.the_searched_ip, name='the_searched_ip'),
 ]
