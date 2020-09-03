@@ -61,5 +61,4 @@ def check_the_votes_with_vt(the_ip):
     return answer
 
 
-test = check_the_votes_with_vt('118.100.116.155')
 

@@ -41,7 +41,7 @@ def get_output(new_response):
 
 
 
-def check_the_ip(suspect_ip):
+def check_the_ip_with_abuse(suspect_ip):
     """This function takes user input, checks the IP and returns the answer"""
     querystring = get_querystring( suspect_ip, '90')
     headers = get_headers(abuseipdb_key)

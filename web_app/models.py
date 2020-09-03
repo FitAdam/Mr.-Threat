@@ -9,6 +9,7 @@ class IP(models.Model):
     date_checked = models.DateTimeField(auto_now_add=True)
     abuseibdb_payload = models.TextField(default='No data available')
     virustotal_payload = models.TextField(default='No data available')
+    virustotal_votes_payload = models.TextField(default='No data avaible')
     badips_payload = models.TextField(default='No data available')
 
     def __str__(self):
