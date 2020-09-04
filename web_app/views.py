@@ -5,7 +5,7 @@ from .models import IP
 from .forms import IP_Form
 
 from .abuseipdb import AbuseIPDB
-from .virus_total import check_the_ip_with_vt, check_the_votes_with_vt
+from .virus_total import VirusTotal
 from .badips import check_the_ip_with_badips
 
 
@@ -30,21 +30,22 @@ def search(request):
             new_ip.owner = request.user
             searched_ip = new_ip.the_ip
             # Check the IP with APIs.
-            checked_ip = AbuseIPDB(new_ip.the_ip,90).check_the_ip_with_abuse()
-            print(f"This is from abuse {checked_ip}")
-            checked_ip_vt = check_the_ip_with_vt(new_ip.the_ip)
-            checked_ip_votes_vt = check_the_votes_with_vt(new_ip.the_ip)
+            checked_ip_abuseipdb  = AbuseIPDB(new_ip.the_ip,90).check_the_ip_with_abuse()
+            #print(f"This is from abuse {checked_ip_abuseipdb}")
+            checked_ip_vt = VirusTotal(new_ip.the_ip).check_the_ip_with_vt()
+            checked_ip_votes_vt = VirusTotal(new_ip.the_ip).check_the_votes_with_vt()
+            print(checked_ip_votes_vt)
             checked_ip_badips = check_the_ip_with_badips(new_ip.the_ip)
             # Save payloads to database.
-            new_ip.abuseibdb_payload = checked_ip
+            new_ip.abuseibdb_payload = checked_ip_abuseipdb
             new_ip.virustotal_payload = checked_ip_vt
             new_ip.virustotal_votes_payload = checked_ip_votes_vt
             new_ip.badips_payload = checked_ip_badips
-            print(new_ip.virustotal_payload)
+            #print(new_ip.virustotal_payload)
 
             new_ip.save()
             
-            context = {'searched_ip': searched_ip, 'checked_ip': checked_ip, 'checked_ip_vt': checked_ip_vt, 'checked_ip_votes_vt': checked_ip_votes_vt, "checked_ip_badips": checked_ip_badips}
+            context = {'searched_ip': searched_ip, 'checked_ip_abuseipdb': checked_ip_abuseipdb, 'checked_ip_vt': checked_ip_vt, 'checked_ip_votes_vt': checked_ip_votes_vt, "checked_ip_badips": checked_ip_badips}
             return render(request,'web_app/the_results.html', context)
     
     # Display a blank or invalid form.
@@ -72,10 +73,10 @@ def the_searched_ip(request, ip_id):
 
     searched_ip = the_ip.the_ip
 
-    checked_ip = AbuseIPDB(searched_ip,90).check_the_ip_with_abuse()
-    checked_ip_vt = check_the_ip_with_vt(the_ip.the_ip)
-    checked_ip_votes_vt = check_the_votes_with_vt(the_ip.the_ip)
-    checked_ip_badips = check_the_ip_with_badips(the_ip.the_ip)
+    checked_ip_abuseipdb = AbuseIPDB(searched_ip,90).check_the_ip_with_abuse()
+    checked_ip_vt = VirusTotal(searched_ip).check_the_ip_with_vt()
+    checked_ip_votes_vt = VirusTotal(searched_ip).check_the_votes_with_vt()
+    checked_ip_badips = check_the_ip_with_badips(searched_ip)
 
-    context = {'searched_ip': searched_ip, 'checked_ip': checked_ip, 'checked_ip_vt': checked_ip_vt, 'checked_ip_votes_vt': checked_ip_votes_vt, "checked_ip_badips": checked_ip_badips}
+    context = {'searched_ip': searched_ip, 'checked_ip_abuseipdb': checked_ip_abuseipdb, 'checked_ip_vt': checked_ip_vt, 'checked_ip_votes_vt': checked_ip_votes_vt, "checked_ip_badips": checked_ip_badips}
     return render(request,'web_app/the_searched_ip.html', context)
