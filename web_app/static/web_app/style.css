@@ -5,11 +5,16 @@ body{
     color: black;
 }
 
-
+#base {
+    background-color:gainsboro;
+    background-size: auto;
+   
+}
 
 #title {
     background-color:gainsboro;
     background-size: auto;
+    
 }
 
 .container-fluid{
@@ -38,7 +43,12 @@ body{
     border-color: black; 
     color: black;
 } 
+/* Welcome view */
 
+.welcome-btn{
+    position: relative;
+    padding-left: 30px;
+}
 /* Search view */
 
 .col-lg-6{

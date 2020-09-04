@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from .models import IP
 from .forms import IP_Form
 
-from .scans import check_the_ip_with_abuse, get_the_isp
+from .abuseipdb import AbuseIPDB
 from .virus_total import check_the_ip_with_vt, check_the_votes_with_vt
 from .badips import check_the_ip_with_badips
 
@@ -30,7 +30,7 @@ def search(request):
             new_ip.owner = request.user
             searched_ip = new_ip.the_ip
             # Check the IP with APIs.
-            checked_ip = check_the_ip_with_abuse(new_ip.the_ip)
+            checked_ip = AbuseIPDB(new_ip.the_ip,90).check_the_ip_with_abuse()
             print(f"This is from abuse {checked_ip}")
             checked_ip_vt = check_the_ip_with_vt(new_ip.the_ip)
             checked_ip_votes_vt = check_the_votes_with_vt(new_ip.the_ip)
@@ -72,7 +72,7 @@ def the_searched_ip(request, ip_id):
 
     searched_ip = the_ip.the_ip
 
-    checked_ip = check_the_ip_with_abuse(the_ip.the_ip)
+    checked_ip = AbuseIPDB(searched_ip,90).check_the_ip_with_abuse()
     checked_ip_vt = check_the_ip_with_vt(the_ip.the_ip)
     checked_ip_votes_vt = check_the_votes_with_vt(the_ip.the_ip)
     checked_ip_badips = check_the_ip_with_badips(the_ip.the_ip)

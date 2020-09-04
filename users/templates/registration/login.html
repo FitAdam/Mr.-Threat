@@ -6,6 +6,7 @@
 {% endblock page_header %}
 
 {% block content %}
+<section id="title">
 <div class="container-fluid">
     <form method="post" action="{% url 'users:login' %}" class="form">
         {% csrf_token %}
@@ -17,4 +18,5 @@
         <input type="hidden" name="next" value="{% url 'web_app:index' %}" />
     </form>
 </div>
+</section>
 {% endblock content %}
