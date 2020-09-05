@@ -6,7 +6,7 @@ import json
 from .keys import virus_total_key
 
 class VirusTotal:
-
+    """This is the class to work with VirusTotal API"""
     def __init__(self, ipAddress):
         self.ipAddress = ipAddress
         self.virus_total_key = virus_total_key
@@ -64,9 +64,9 @@ class VirusTotal:
 
 
 
-fresh_test = VirusTotal('45.142.120.137')
+#fresh_test = VirusTotal('45.142.120.137')
 
 #print(fresh_test.check_the_ip_with_vt())
 
-bood_test = VirusTotal('77.81.166.81')
-print(fresh_test.check_the_votes_with_vt())
+#bood_test = VirusTotal('77.81.166.81')
+#print(fresh_test.check_the_votes_with_vt())
