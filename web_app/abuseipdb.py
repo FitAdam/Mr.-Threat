@@ -62,7 +62,4 @@ class AbuseIPDB:
         return decodedResponse['data']['isp']
 
 
-#fresh_test = AbuseIPDB('45.142.120.137',90)
-
-#print(fresh_test.check_the_ip_with_abuse())
 

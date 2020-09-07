@@ -5,3 +5,6 @@ __pycache__/
 secret_settings.py
 keys.py
 debug.log
+
+.vscode
+.vscode/.ropeproject

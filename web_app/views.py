@@ -61,7 +61,7 @@ def the_results(request):
 
 @login_required
 def searched_ips(request):
-    the_ips =  IP.objects.all()
+    the_ips =  IP.objects.order_by('date_checked')
     context = {'the_ips': the_ips}
     return render(request, 'web_app/searched_ips.html', context)
 
@@ -69,7 +69,7 @@ def searched_ips(request):
 @login_required
 def the_searched_ip(request, ip_id):
     """Show a single ip from a history"""
-    the_ip = IP.objects.get(id=ip_id)
+    the_ip = get_object_or_404(IP, id=ip_id)
 
     searched_ip = the_ip.the_ip
 

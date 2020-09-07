@@ -1,12 +1,13 @@
 {% extends "web_app/base.html" %}
 {% load bootstrap4 %}
 
+
 {% block content %}
-<section id="title">
+<section id="offer">
     <div class="container-fluid">
-        <p>You have been logged out. See you next time!</p>
+        <div class="alert alert-success logged_out" role="alert">
+            <h3>You have been logged out. See you next time!</h3>
+        </div>
     </div>
 </section>
-
-
 {% endblock content %}

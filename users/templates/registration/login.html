@@ -6,7 +6,7 @@
 {% endblock page_header %}
 
 {% block content %}
-<section id="title">
+<section id="offer">
 <div class="container-fluid">
     <form method="post" action="{% url 'users:login' %}" class="form">
         {% csrf_token %}
@@ -14,9 +14,15 @@
         {% buttons %}
         <button name="submit" class="btn btn-primary">Log in</button>
         {% endbuttons %}
-
+        {% for message in messages %}
+        <p>{{ message }}</p>
+        {% endfor %}
         <input type="hidden" name="next" value="{% url 'web_app:index' %}" />
     </form>
+    <div class="d-flex flex-column">
+        <a class="m-auto" href="{% url 'password_reset' %}">Password reset</a>
+    </div>
 </div>
+
 </section>
 {% endblock content %}

@@ -13,7 +13,8 @@ body{
 
 #title {
     background-color:gainsboro;
-    background-size: auto;
+    background-size: cover;
+    
     
 }
 
@@ -48,6 +49,10 @@ body{
 .welcome-btn{
     position: relative;
     padding-left: 30px;
+    float: right;
+}
+.welcome-btn:hover{
+    transform: scale(1.1);
 }
 /* Search view */
 
@@ -120,4 +125,8 @@ body{
     background-color: black;
     color: honeydew;
     font-family: 'Bebas Neue';
-  }
+    margin-bottom: auto;
+
+}
+
+
