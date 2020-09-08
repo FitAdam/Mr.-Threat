@@ -10,87 +10,93 @@
       <p class="mb-0">Well done!</p>
     </div>
   </div>
-    <div class="card-deck">
-      <div class="card">
-        <img class="card-img-top" src="https://www.abuseipdb.com/img/abuseipdb.png.pagespeed.ce.CI8T6WsXU7.png"
-          alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">AbuseIPDB</h5>
-          <p class="card-text">
-            {% for key, value in checked_ip_abuseipdb.items %}
-            <li><strong>{{ key }}:</strong> {{ value }} </li>
-            {% endfor %}</p>
-          <p class="card-text"><small class="text-muted">Last 90 days.</small></p>
-        </div>
-      </div>
-      <div class="card">
-        <img class="card-img-top" src="https://www.virustotal.com/gui/images/vt-enterprise.svg" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Virus total</h5>
-          <p class="card-text">
-            {% for key, value in checked_ip_votes_vt.items %}
-            {% if key != 'last_analysis_results' and key != 'whois' and value|length == 0 %}
-            <li><strong>{{ key }}:</strong> {{ value }} </li>
-            {% else %}
-            {% for x, y in value.items %}
-            {% if key != 'last_analysis_results' and key != 'whois' %}
-            <li><strong> {{ x }}:</strong> {{ y }} </li>
-            {% endif %}
-            {% endfor %}
-            {% endif %}
-            {% endfor %}
-          </p>
-          <p class="card-text"><small class="text-muted">All the time.</small></p>
-        </div>
-      </div>
-      <div class="card">
-        <img class="card-img-top" src="https://www.badips.com/img/badips.com-lm.png" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">badips</h5>
-          <p class="card-text">
-            {% for key, value in checked_ip_badips.items %}
-            {% if value|length == 0 %} 
-            <li><strong>{{ key }}:</strong> {{ value }} </li>
-            {% else %}
-            {% for x, y in value.items %}
-            <li><strong> {{ x }}:</strong> {{ y }} </li>
-            {% endfor %}
-            {% endif %}
-            {% endfor %}
-          </p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-        </div>
+  <div class="card-deck">
+    <div class="card">
+      <img class="card-img-top" src="https://www.abuseipdb.com/img/abuseipdb.png.pagespeed.ce.CI8T6WsXU7.png"
+        alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">AbuseIPDB</h5>
+        <p class="card-text">
+          {% for key, value in checked_ip_abuseipdb.items %}
+          <li><strong>{{ key }}:</strong> {{ value }} </li>
+          {% endfor %}</p>
+        <p class="card-text"><small class="text-muted">Last 90 days.</small></p>
       </div>
     </div>
-  
+    <div class="card">
+      <img class="card-img-top" src="https://www.virustotal.com/gui/images/vt-enterprise.svg" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Virus total</h5>
+        <p class="card-text">
+          {% for key, value in checked_ip_votes_vt.items %}
+          {% if key != 'last_analysis_results' and key != 'whois' and value|length == 0 %}
+          <li><strong>{{ key }}:</strong> {{ value }} </li>
+          {% else %}
+          {% for x, y in value.items %}
+          {% if key != 'last_analysis_results' and key != 'whois' %}
+          <li><strong> {{ x }}:</strong> {{ y }} </li>
+          {% endif %}
+          {% endfor %}
+          {% endif %}
+          {% endfor %}
+        </p>
+        <p class="card-text"><small class="text-muted">All the time.</small></p>
+      </div>
+    </div>
+    <div class="card">
+      <img class="card-img-top" src="https://www.badips.com/img/badips.com-lm.png" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">badips</h5>
+        <p class="card-text">
+          {% for key, value in checked_ip_badips.items %}
+          {% if value|length == 0 %}
+          <li><strong>{{ key }}:</strong> {{ value }} </li>
+          {% else %}
+          {% for x, y in value.items %}
+          <li><strong> {{ x }}:</strong> {{ y }} </li>
+          {% endfor %}
+          {% endif %}
+          {% endfor %}
+        </p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+  </div>
+
 </section>
 <section id="offer">
   <div class="container-fluid">
     <h2>Virus total</h2>
-    <div class="table-responsive dark">
-      <table class="table table-striped table-sm">
-        {% for key, value in checked_ip_vt.items %}
-        <thead >
-          <tr>
-            <th>{{ key }}</th>
-          </tr>
-        </thead>
+    <div class="box" style="height:320px;width:320px;border:1px solid #ccc;overflow:auto;">
+      <div class="table-responsive dark">
+        <table class="table table-striped table-sm">
+          {% for key, value in checked_ip_vt.items %}
+          <thead>
+            <tr>
+              <th>{{ key }}</th>
+            </tr>
+          </thead>
 
-        <tbody>
-          {% for x, y in value.items %}
-          <tr>
-            {% if y == 'malicious' %}
-            <td style="background-color: red;">{{ x }} : {{ y }} </td>
-            {% elif y == 'suspicious' %}
-            <td style="background-color: yellow;">{{ x }} : {{ y }} </td>
-            {% else %}
-            <td>{{ x }} : {{ y }} </td>
-            {% endif %}
-          </tr>
+          <tbody>
+            {% for x, y in value.items %}
+            <tr>
+              {% if y == 'malicious' %}
+              <td style="background-color: red;">{{ x }} : {{ y }} </td>
+              {% elif y == 'suspicious' %}
+              <td style="background-color: yellow;">{{ x }} : {{ y }} </td>
+              {% else %}
+              <td>{{ x }} : {{ y }} </td>
+              {% endif %}
+            </tr>
+            {% endfor %}
+          </tbody>
           {% endfor %}
-        </tbody>
-        {% endfor %}
-      </table>
+        </table>
+      </div>
+    </div>
+    <div class="box" style="height:320px;width:320px;border:1px solid #ccc;overflow:auto;">
+      <p>{{ checked_ip_shodan_general_info }}</p>
+      <p>{{ checked_ip_shodan_all_banners }}</p>
     </div>
   </div>
 </section>

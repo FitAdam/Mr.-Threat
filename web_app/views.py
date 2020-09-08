@@ -7,6 +7,7 @@ from .forms import IP_Form
 from .abuseipdb import AbuseIPDB
 from .virus_total import VirusTotal
 from .badips import BadIPs
+from .shodan_api import Shodan_API
 
 
 def index(request):
@@ -35,6 +36,8 @@ def search(request):
             checked_ip_vt = VirusTotal(searched_ip).check_the_ip_with_vt()
             checked_ip_votes_vt = VirusTotal(searched_ip).check_the_votes_with_vt()
             checked_ip_badips = BadIPs(searched_ip).check_the_ip_with_badips()
+            checked_ip_shodan_general_info = Shodan_API(searched_ip).get_general_info()
+            checked_ip_shodan_all_banners = Shodan_API(searched_ip).get_all_banners()
 
             # Save payloads to database.
             new_ip.abuseibdb_payload = checked_ip_abuseipdb
@@ -45,7 +48,7 @@ def search(request):
 
             new_ip.save()
             
-            context = {'searched_ip': searched_ip, 'checked_ip_abuseipdb': checked_ip_abuseipdb, 'checked_ip_vt': checked_ip_vt, 'checked_ip_votes_vt': checked_ip_votes_vt, "checked_ip_badips": checked_ip_badips}
+            context = {'searched_ip': searched_ip, 'checked_ip_abuseipdb': checked_ip_abuseipdb, 'checked_ip_vt': checked_ip_vt, 'checked_ip_votes_vt': checked_ip_votes_vt, "checked_ip_badips": checked_ip_badips, "checked_ip_shodan_general_info": checked_ip_shodan_general_info, "checked_ip_shodan_all_banners": checked_ip_shodan_all_banners}
             return render(request,'web_app/the_results.html', context)
     
     # Display a blank or invalid form.
