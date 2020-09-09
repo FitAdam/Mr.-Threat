@@ -67,30 +67,36 @@
 <section id="offer">
   <div class="container-fluid">
     <h2>Virus total</h2>
-    <div class="table-responsive dark">
-      <table class="table table-striped table-sm">
-        {% for key, value in checked_ip_vt.items %}
-        <thead >
-          <tr>
-            <th>{{ key }}</th>
-          </tr>
-        </thead>
+    <div class="box" style="height:320px;width:320px;border:1px solid #ccc;overflow:auto;">
+      <div class="table-responsive dark">
+        <table class="table table-striped table-sm">
+          {% for key, value in checked_ip_vt.items %}
+          <thead>
+            <tr>
+              <th>{{ key }}</th>
+            </tr>
+          </thead>
 
-        <tbody>
-          {% for x, y in value.items %}
-          <tr>
-            {% if y == 'malicious' %}
-            <td style="background-color: red;">{{ x }} : {{ y }} </td>
-            {% elif y == 'suspicious' %}
-            <td style="background-color: yellow;">{{ x }} : {{ y }} </td>
-            {% else %}
-            <td>{{ x }} : {{ y }} </td>
-            {% endif %}
-          </tr>
+          <tbody>
+            {% for x, y in value.items %}
+            <tr>
+              {% if y == 'malicious' %}
+              <td style="background-color: red;">{{ x }} : {{ y }} </td>
+              {% elif y == 'suspicious' %}
+              <td style="background-color: yellow;">{{ x }} : {{ y }} </td>
+              {% else %}
+              <td>{{ x }} : {{ y }} </td>
+              {% endif %}
+            </tr>
+            {% endfor %}
+          </tbody>
           {% endfor %}
-        </tbody>
-        {% endfor %}
-      </table>
+        </table>
+      </div>
+    </div>
+    <div class="box" style="height:320px;width:320px;border:1px solid #ccc;overflow:auto;">
+      <p>{{ checked_ip_shodan_general_info }}</p>
+      <p>{{ checked_ip_shodan_all_banners }}</p>
     </div>
   </div>
 </section>

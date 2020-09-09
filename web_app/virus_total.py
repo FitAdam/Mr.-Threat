@@ -52,12 +52,3 @@ class VirusTotal:
         answer = self.get_output(self.response)
         return answer['data']['attributes']
         
-
-
-
-#fresh_test = VirusTotal('45.142.120.137')
-
-#print(fresh_test.check_the_ip_with_vt())
-
-#bood_test = VirusTotal('77.81.166.81')
-#print(fresh_test.check_the_votes_with_vt())

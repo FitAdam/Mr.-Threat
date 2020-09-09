@@ -12,7 +12,7 @@ urlpatterns = [
     # Search page
     path('search/', views.search, name='search'),
     # Page that shows threat intelligence
-    path('the_results/', views.the_results, name='the_results'),
+    #path(r'the_results/(?P<searched_ip>[0-9]+)/$', views.the_results, name='the_results'),
     # Page that shows user's searched IPs
     path('searched_ips/', views.searched_ips, name='searched_ips'),
     # Page that shows user's saved IP

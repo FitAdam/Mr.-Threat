@@ -49,9 +49,3 @@ class PhishTank:
        # answer = self.get_output(response)
         return response #answer
 
-
-new_check = PhishTank('https://atsdddatffsd.weebly.com/')
-
-r = new_check.check_the_URI_with_pt()
-
-print(r.text)

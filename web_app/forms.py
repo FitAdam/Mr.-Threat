@@ -10,3 +10,10 @@ class IP_Form(forms.ModelForm):
         model = IP
         fields = ['the_ip']
         labels = {'the_ip': ''}
+
+"""
+class IP_Form_Report(forms.ModelForm):
+    reported  = forms.BooleanField(required=False)
+    class Meta:
+        model = IP
+   """     

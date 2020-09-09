@@ -7,10 +7,12 @@ class IP(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     reported = models.BooleanField(default=False)
     date_checked = models.DateTimeField(auto_now_add=True)
-    abuseibdb_payload = models.TextField(default='No data available')
-    virustotal_payload = models.TextField(default='No data available')
-    virustotal_votes_payload = models.TextField(default='No data avaible')
-    badips_payload = models.TextField(default='No data available')
+    abuseibdb_payload = models.JSONField(default=dict)
+    virustotal_payload = models.JSONField(default=dict)
+    virustotal_votes_payload = models.JSONField(default=dict)
+    badips_payload = models.JSONField(default=dict)
+    shodan_general_info_payload = models.TextField(default='No data available')
+    shodan_all_banners_payload = models.TextField(default='No data available')
 
     def __str__(self):
         """Return a string representation of the model."""

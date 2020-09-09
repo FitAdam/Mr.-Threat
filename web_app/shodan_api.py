@@ -37,6 +37,3 @@ class Shodan_API:
 
 
 
-host = Shodan_API("118.24.149.248")
-
-print(host.get_general_info())
