@@ -59,3 +59,4 @@ def account_view(request):
     context['account_form'] = form
 
     return render(request, "registration/account.html", context)
+
