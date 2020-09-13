@@ -30,7 +30,7 @@ class Shodan_API:
                                 Organization: {}
                                 Operating System: {}
                         """.format(self.host['ip_str'], self.host.get('org', 'n/a'), self.host.get('os', 'n/a'))
-                    return general_info
+                    return general_info.replace("\x00", "\uFFFD")
             else:
                 return 'No data available'
 
@@ -43,6 +43,6 @@ class Shodan_API:
                                         Banner: {}
 
                                 """.format(item['port'], item['data'])
-                return all_banners
+                return all_banners.replace("\x00", "\uFFFD")
             else:
                 return 'No data available'

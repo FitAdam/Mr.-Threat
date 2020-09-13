@@ -13,6 +13,15 @@
             </div>
 
             <div class="col-lg-6">
+                
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                
                 <form action="" class="form" method="post">
                     {% csrf_token %}
                     {% bootstrap_form form %}
@@ -27,14 +36,15 @@
 
         <div class="APIs">
             <section class="colored-section" id="sources">
-                <img class="source-logo" src="https://www.abuseipdb.com/img/abuseipdb.png.pagespeed.ce.CI8T6WsXU7.png"
-                    alt="abuseipdb">
-                <img class="source-logo" src="https://www.virustotal.com/gui/images/vt-enterprise.svg" alt="virustotal">
-                <img class="source-logo" src="https://www.phishtank.com/images/logo_with_tagline.gif" alt="phishtank">
-                <img class="source-logo" src="https://www.badips.com/img/badips.com-lm.png" alt="badips">
-
+              <img class="source-logo" src="https://www.abuseipdb.com/img/abuseipdb.png.pagespeed.ce.CI8T6WsXU7.png"
+                alt="abuseipdb">
+              <img class="source-logo" src="https://www.virustotal.com/gui/images/vt-enterprise.svg" alt="virustotal logo">
+              <img class="source-logo" src="https://static.shodan.io/legal/images/image1.png" alt="shodan search logo">
+              <!-- <img class="source-logo" src="https://www.phishtank.com/images/logo_with_tagline.gif" alt="phishtank logo">-->
+              <img class="source-logo" src="https://www.badips.com/img/badips.com-lm.png" alt="badips logo">
+      
             </section>
-        </div>
+          </div>
     </div>
 </section>
 {% endblock content %}

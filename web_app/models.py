@@ -19,3 +19,12 @@ class IP(models.Model):
         return self.the_ip
     
         
+
+class Plan(models.Model):
+    member = models.ForeignKey(User, on_delete=models.CASCADE)
+    plan = models.CharField(default='Basic', max_length=100)
+    number_of_requests = models.IntegerField(default=5)
+    
+    def __str__(self):
+        """Return a string representation of the model."""
+        return self.plan

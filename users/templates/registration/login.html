@@ -14,9 +14,13 @@
         {% buttons %}
         <button name="submit" class="btn btn-primary">Log in</button>
         {% endbuttons %}
-        {% for message in messages %}
-        <p>{{ message }}</p>
-        {% endfor %}
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
         <input type="hidden" name="next" value="{% url 'web_app:index' %}" />
     </form>
     <div class="d-flex flex-column">
