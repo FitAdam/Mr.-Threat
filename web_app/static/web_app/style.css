@@ -3,6 +3,7 @@ body{
     size: 3rem;
     line-height: 1.5;
     color: black;
+    background-color: black;
 }
 
 #base {
@@ -130,7 +131,10 @@ body{
 }
 
 
-
+.footer{
+    background-color: black;
+    padding-bottom: 1em;
+}
 
 
 

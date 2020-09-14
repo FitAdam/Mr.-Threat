@@ -31,16 +31,17 @@ def search(request):
         # No data submitted; create a blank form.
         form = IP_Form()
     else:
-        if current_plan.number_of_requests > 0:
-            print(current_plan.number_of_requests)
-            # POST data submitted; create a blank form.
-            form = IP_Form(data=request.POST)
-            if form.is_valid():
+       
+        # POST data submitted; create a blank form.
+        form = IP_Form(data=request.POST)
+        if form.is_valid():
+
+            if current_plan.number_of_requests > 0:
+                
                 # substract a search from the plan
                 current_plan.number_of_requests -= 1
                 current_plan.save()
-                print(current_plan.number_of_requests)
-
+                
                 new_ip = form.save(commit=False)
                 new_ip.owner = request.user
                 searched_ip = new_ip.the_ip
@@ -77,10 +78,10 @@ def search(request):
 
                 """Show the reports from APIs."""
                 return render(request, 'web_app/the_results.html', context)
-        else:
-            messages.error(request, "You have used all your number of searches, buy a plan or comeback tomorrow :)")
+            else:
+                messages.error(request, "You have used all your number of searches, buy a plan or comeback tomorrow :)")
 
-    form = IP_Form()
+    
     # Display a blank or invalid form.
     context = {'form': form}
     return render(request, 'web_app/search.html', context)
