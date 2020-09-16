@@ -1,8 +1,7 @@
 import requests
 import json
 import base64
-
-from keys import phish_tank_key
+import os
 
 class PhishTank:
     """This class is used to check URI with Phish Tank API"""
@@ -26,7 +25,7 @@ class PhishTank:
         """Returns the headers"""
         headers = {
             'format': 'json',
-            'app_key': phish_tank_key,
+            'app_key': os.getenv("phish_tank_key"),
         }
         return headers
 

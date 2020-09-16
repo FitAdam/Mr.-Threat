@@ -2,7 +2,7 @@ import requests
 import json
 
 # key
-from .keys import abuseipdb_key
+import os
 
 class AbuseIPDB:
     """This is the class to work with AbuseIPDB API"""
@@ -10,7 +10,7 @@ class AbuseIPDB:
         # Defining the api-endpoint
         self.url_check = 'https://api.abuseipdb.com/api/v2/check'
         # The API key
-        self.abuseipdb_key = abuseipdb_key
+        self.abuseipdb_key = os.getenv("abuseipdb_key")
         self.ipAddress = ipAddress
         self.maxAgeInDays = maxAgeInDays
         self.querystring = self.get_querystring()

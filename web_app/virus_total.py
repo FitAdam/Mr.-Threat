@@ -1,15 +1,15 @@
 
 import requests
 import json
-
+import os
 # key
-from .keys import virus_total_key
+#from .keys import virus_total_key
 
 class VirusTotal:
     """This is the class to work with VirusTotal API"""
     def __init__(self, ipAddress):
         self.ipAddress = ipAddress
-        self.virus_total_key = virus_total_key
+        self.virus_total_key = os.getenv("virus_total_key")
         self.url = self.get_url_with_ip()
         self.headers = self.get_headers()
         self.response = self.make_request_to_vt()

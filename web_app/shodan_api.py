@@ -1,6 +1,6 @@
 import shodan
 
-from .keys import SHODAN_API_KEY
+import os
 
 
 class Shodan_API:
@@ -8,7 +8,7 @@ class Shodan_API:
 
     def __init__(self, the_ip):
         self.the_ip = the_ip
-        self.api = shodan.Shodan(SHODAN_API_KEY)
+        self.api = shodan.Shodan(os.getenv("SHODAN_API_KEY")
         self.host = self.check_ip_with_shodan()
 
     def check_ip_with_shodan(self):
