@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 
-from secret_settings import SECRET_KEY, MY_EMAIL_HOST_USER, MY_EMAIL_HOST_PASSWORD, DB_PASSWORD
+from secret_settings import SECRET_KEY, MY_EMAIL_HOST_USER, MY_EMAIL_HOST_PASSWORD, DB_PASSWORD, MY_DEFAULT_FROM_EMAIL
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
@@ -27,16 +27,18 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-if DEBUG:
-    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' #During
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend' 
 
 # Email settings 
 
-EMAIL_HOST = 'smtp.gmail.com'
+DEFAULT_FROM_EMAIL = MY_DEFAULT_FROM_EMAIL
+EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_HOST_USER = MY_EMAIL_HOST_USER
 EMAIL_HOST_PASSWORD = MY_EMAIL_HOST_PASSWORD
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+
 
 # Application definition
 
