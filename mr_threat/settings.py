@@ -11,8 +11,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
-
-from secret_settings import SECRET_KEY, MY_EMAIL_HOST_USER, MY_EMAIL_HOST_PASSWORD, DB_PASSWORD, MY_DEFAULT_FROM_EMAIL
+import os
+#from secret_settings import SECRET_KEY, MY_EMAIL_HOST_USER, MY_EMAIL_HOST_PASSWORD, DB_PASSWORD, MY_DEFAULT_FROM_EMAIL
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
@@ -21,6 +21,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -32,10 +33,10 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 # Email settings 
 
-DEFAULT_FROM_EMAIL = MY_DEFAULT_FROM_EMAIL
+DEFAULT_FROM_EMAIL = os.getenv("MY_DEFAULT_FROM_EMAIL")
 EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_HOST_USER = MY_EMAIL_HOST_USER
-EMAIL_HOST_PASSWORD = MY_EMAIL_HOST_PASSWORD
+EMAIL_HOST_USER = os.getenv("MY_EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.getenv("MY_EMAIL_HOST_PASSWORD")
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
@@ -97,7 +98,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'Demo_Test',
         'USER': 'postgres',
-        'PASSWORD': DB_PASSWORD,
+        'PASSWORD': os.getenv("DB_PASSWORD"),
         'HOST': 'localhost',
         'PORT': '5432',
     }
