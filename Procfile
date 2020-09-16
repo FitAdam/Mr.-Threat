@@ -1,0 +1,1 @@
+web: gunicorn mr_threat.wsgi --log-file -

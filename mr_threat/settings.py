@@ -143,7 +143,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 LOGIN_URL = 'users:login'
-
+"""
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -162,3 +162,9 @@ LOGGING = {
         },
     },
 }
+
+"""
+
+# Heroku settings.
+import django_heroku
+django_heroku.settings(locals())
