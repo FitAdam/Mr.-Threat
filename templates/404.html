@@ -2,17 +2,24 @@
 {% load bootstrap4 %}
 
 {% block page_header %}
-    <h2 style="color: cornsilk;">The item you requested is not availble. (404)</h2>
+<h2 style="color: cornsilk;">The item you requested is not availble. (404)</h2>
 {% endblock page_header %}
 
 {% block content %}
+<section id="offer">
+    <div class="container-fluid">
+        <p>The HTTP 404, 404 Not Found, 404, 404 Error, Page Not Found, File Not Found, or Server Not Found error
+            message is a
+            Hypertext Transfer Protocol (HTTP) standard response code, in computer network communications, to indicate
+            that the browser was able to communicate
+            with a given server, but the server could not find what was requested. The error may also be used when a
+            server does not wish to disclose whether
+            it has the requested information.
 
-<p>The HTTP 404, 404 Not Found, 404, 404 Error, Page Not Found, File Not Found, or Server Not Found error message is a
-     Hypertext Transfer Protocol (HTTP) standard response code, in computer network communications, to indicate that the browser was able to communicate 
-     with a given server, but the server could not find what was requested. The error may also be used when a server does not wish to disclose whether
-      it has the requested information.
+            The website hosting server will typically generate a "404 Not Found"
 
-    The website hosting server will typically generate a "404 Not Found" 
-    web page when a user attempts to follow a broken or dead link; hence the 404 error is one of the most recognizable errors encountered on the World Wide Web.</p>
-
+            web page when a user attempts to follow a broken or dead link; hence the 404 error is one of the most
+            recognizable errors encountered on the World Wide Web.</p>
+    </div>
+</section>
 {% endblock content %}
