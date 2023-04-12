@@ -4,11 +4,6 @@ Mr. Threat is a Django Web-App that allows SOC Analysts to
 look up the IPs they're interested in and speed up their workload.
 This is an educational project. 
 
-# Live Version
-
-To see an online version go to:
-
-[mr-threat.herokuapp.com](https://mr-threat.herokuapp.com/)
 
 ## Usage
 
